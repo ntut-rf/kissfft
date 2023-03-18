@@ -24,7 +24,7 @@ static void kf_bfly2(
     kiss_fft_cpx t;
     Fout2 = Fout + m;
     do{
-        C_FIXDIV(*Fout,2); C_FIXDIV(*Fout2,2);
+        C_FIXDIV(*Fout,1); C_FIXDIV(*Fout2,1);
 
         C_MUL (t,  *Fout2 , *tw1);
         tw1 += fstride;
@@ -52,7 +52,7 @@ static void kf_bfly4(
     tw3 = tw2 = tw1 = st->twiddles;
 
     do {
-        C_FIXDIV(*Fout,4); C_FIXDIV(Fout[m],4); C_FIXDIV(Fout[m2],4); C_FIXDIV(Fout[m3],4);
+        /*if (k > 1)*/ { C_FIXDIV(*Fout,2); C_FIXDIV(Fout[m],2); C_FIXDIV(Fout[m2],2); C_FIXDIV(Fout[m3],2); }
 
         C_MUL(scratch[0],Fout[m] , *tw1 );
         C_MUL(scratch[1],Fout[m2] , *tw2 );
