@@ -73,9 +73,7 @@ struct kiss_fft_state{
 #   define DIVSCALAR(x,k) \
     (x) = sround( smul(  x, SAMP_MAX/k ) )
 
-#   define C_FIXDIV(c,div) \
-    do {    DIVSCALAR( (c).r , div);  \
-        DIVSCALAR( (c).i  , div); }while (0)
+#   define C_FIXDIV(c,div) /* NOOP */
 
 #   define C_MULBYSCALAR( c, s ) \
     do{ (c).r =  sround( smul( (c).r , s ) ) ;\
